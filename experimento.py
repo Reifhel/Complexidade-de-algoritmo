@@ -7,153 +7,150 @@ from sorteadores.select_sort_recursivo import select_sort_recursivo_wapper
 from sorteadores.select_sort_recursivo_random import select_sort_recursivo_random_wapper
 from sorteadores.shellSort_base_line import shellSort_Wapper
 from sorteadores.heap_sort_recursivo import heapSort
-from sorteadores.insertion_sort import insertionSort
-
-from gerador import gerar_dados_crescente, gerar_dados_random, gerar_dados_decrescente, agora, dif_time
-
+from sorteadores.counting_sort import countingSort
+from gerador import gerar_dados_crescente
+from gerador import gerar_dados_random
+from gerador import gerar_dados_decrescente
+from gerador import agora
+from gerador import dif_time
+######### PANDAS #########
 import pandas as pd
 
-# ----------------------------------------------------------
-#               DEMONSTRAÇÂO DA EXECUÇÂO
-# ----------------------------------------------------------
-# X = [58, 30, 97, 21, 81, 35, 48, 59, 24, 2, -1]
-# print(f'X : {X}')
+"""
+X = [58, 30, 97, 21, 81, 35, 48, 59, 24, 2, -1]
+print(f'X : {X}')
 
-# QS1 = quick_sort_recursivo_wapper(X.copy())
-# QS2 = quick_sort_recursivo_random_wapper(X.copy())
-# print(f'Quick sort recursivo: {QS1}')
-# print(f'Quick sort recursivo randomizado: {QS2}')
+QS1 = quick_sort_recursivo_wapper(X.copy())
+QS2 = quick_sort_recursivo_random_wapper(X.copy())
+print(f'Quick sort recursivo: {QS1}')
+print(f'Quick sort recursivo randomizado: {QS2}')
 
-# MS1 = Merge_Sort_interativo_wapper(X.copy())
-# MS2 = merge_sort__recursivo_wapper(X.copy())
-# MS3 = merge_sort_recursivo_random_wapper(X.copy())
-# print(f'Merge sort interativo: {MS1}')
-# print(f'Merge sort recursivo: {MS2}')
-# print(f'Merge sort recursivo randomizado: {MS3}')
+MS1 = Merge_Sort_interativo_wapper(X.copy())
+MS2 = merge_sort__recursivo_wapper(X.copy())
+MS3 = merge_sort_recursivo_random_wapper(X.copy())
+print(f'Merge sort interativo: {MS1}')
+print(f'Merge sort recursivo: {MS2}')
+print(f'Merge sort recursivo randomizado: {MS3}')
 
-# SS1 = select_sort_recursivo_wapper(X.copy())
-# SS2 = select_sort_recursivo_random_wapper(X.copy())
-# print(f'Select sort recursivo: {SS1}')
-# print(f'Select sort recursivo randomizado: {SS2}')
+SS1 = select_sort_recursivo_wapper(X.copy())
+SS2 = select_sort_recursivo_random_wapper(X.copy())
+print(f'Select sort recursivo: {SS1}')
+print(f'Select sort recursivo randomizado: {SS2}')
 
-# BASE_LINE = shellSort_Wapper(X.copy())
-# print(f'Sell Sort [Baseline]: {BASE_LINE}')
+BASE_LINE = shellSort_Wapper(X.copy())
+print(f'Sell Sort [Baseline]: {BASE_LINE}')
+"""
 
-# ----------------------------------------------------------
-#                    FUNÇÂO DE EXECUÇÂO
-# ----------------------------------------------------------
-
+"""
+Função de rotina de execuções
+"""
 def execucao(X):
-    # Criando o dicionario para armazenar os tempos
-    temposExec = []
+    D = []
 
-    # Rodando quick sort recursivo e salvando o tempo no dicionario
-    a = agora()
-    QS1 = quick_sort_recursivo_wapper(X.copy())
-    b = agora()
-    temposExec.append(dif_time(b,a))
-
-    # Rodando o quick sort random e salvando o tempo no dicionario
-    a = agora()
-    QS2 = quick_sort_recursivo_random_wapper(X.copy())
-    b = agora()
-    temposExec.append(dif_time(b,a))
-
-    # Rodando o merge sort interativo e salvando o tempo no dicionario
     # a = agora()
-    # MS1 = Merge_Sort_interativo_wapper(X.copy())
+    # QS1 = quick_sort_recursivo_wapper(X.copy())
     # b = agora()
-    # temposExec.append(dif_time(b,a))
+    # D.append(dif_time(b, a))
 
-    # Rodando o merge sort recursivo e salvando o tempo no dicionario
-    a = agora()
-    MS2 = merge_sort__recursivo_wapper(X.copy())
-    b = agora()
-    temposExec.append(dif_time(b,a))
-
-    # Rodando o merge sort recursivo e salvando o tempo no dicionario
-    a = agora()
-    MS3 = merge_sort_recursivo_random_wapper(X.copy())
-    b = agora()
-    temposExec.append(dif_time(b,a))
-
-    # Rodando o select sort recursivo e salvando o tempo no dicionario
-    a = agora()
-    SS1 = select_sort_recursivo_wapper(X.copy())
-    b = agora()
-    temposExec.append(dif_time(b,a))
-
-    # Rodando o select sort recursivo e salvando o tempo no dicionario
-    a = agora()
-    SS2 = select_sort_recursivo_random_wapper(X.copy())
-    b = agora()
-    temposExec.append(dif_time(b,a))
-
-    # Rodando o shell sort e salvando o tempo no dicionario
     # a = agora()
-    # BASE_LINE = shellSort_Wapper(X.copy())
+    # QS2 = quick_sort_recursivo_random_wapper(X.copy())
     # b = agora()
-    # temposExec.append(dif_time(b,a))
+    # D.append(dif_time(b, a))
 
-    # Rodando o heap sort e salvando o tempo no dicionario
+    a = agora()
+    MS1 = Merge_Sort_interativo_wapper(X.copy())
+    b = agora()
+    D.append(dif_time(b, a))
+
     # a = agora()
-    # HP = heapSort(X.copy())
+    # MS2 = merge_sort__recursivo_wapper(X.copy())
     # b = agora()
-    # temposExec.append(dif_time(b,a))
+    # D.append(dif_time(b, a))
 
-    # Rodando o insertion sort e salvando o tempo no dicionario
     # a = agora()
-    # IS = insertionSort(X.copy())
+    # MS3 = merge_sort_recursivo_random_wapper(X.copy())
     # b = agora()
-    # temposExec.append(dif_time(b,a))
+    # D.append(dif_time(b, a))
 
-    return temposExec
+    # a = agora()
+    # SS1 = select_sort_recursivo_wapper(X.copy())
+    # b = agora()
+    # D.append(dif_time(b, a))
 
+    # a = agora()
+    # SS2 = select_sort_recursivo_random_wapper(X.copy())
+    # b = agora()
+    # D.append(dif_time(b, a))
 
-def testes(numExec=10, tamanhoArray=100, tipo="DSC"):
-    execucoes = []
-    tamExecucoes = []
+    a = agora()
+    BASE_LINE = shellSort_Wapper(X.copy())
+    b = agora()
+    D.append(dif_time(b, a))
 
-    # Caso seja para gerar dados crescentes
-    if tipo == "ASC":
-        for i in range(1, numExec, 1):
-           tamanho = i*tamanhoArray
-           X = gerar_dados_decrescente(tamanhoArray)
-           execucoes.append(execucao(X))
-           tamExecucoes.append(tamanho)
-    # Caso seja para gerar dados decrescentes
-    elif tipo == "DSC":
-        for i in range(1, numExec, 1):
-           tamanho = i*tamanhoArray
-           X = gerar_dados_crescente(tamanhoArray)
-           execucoes.append(execucao(X))
-           tamExecucoes.append(tamanho)
-    # Caso seja para gerar dados aleatórios
-    elif tipo =="RNG":
-        for i in range(1, numExec, 1):
-           tamanho = i*tamanhoArray
-           X = gerar_dados_random(tamanhoArray)
-           execucoes.append(execucao(X))
-           tamExecucoes.append(tamanho)
-    # Caso o tipo seja diferente
+    a = agora()
+    HPS = heapSort(X.copy())
+    b = agora()
+    D.append(dif_time(b, a))
+
+    a = agora()
+    CTS = countingSort(X.copy())
+    b = agora()
+    D.append(dif_time(b, a))
+
+    return D
+
+def testes(T=100, N=10, tipo="DSC"):
+    L = []
+    L_TAMANHOS = []
+    if tipo == "DSC":
+        # Dados decresente dos algoritimos
+        for i in range(1, N, 1):
+            tamanho = i * T
+            X = gerar_dados_decrescente(tamanho)
+            L.append(execucao(X))
+            L_TAMANHOS.append(tamanho)
+    elif tipo == "ASC":
+        # Dados cresente dos algoritimos
+        for i in range(1, N, 1):
+            tamanho = i * T
+            X = gerar_dados_crescente(tamanho)
+            L.append(execucao(X))
+            L_TAMANHOS.append(tamanho)
+    elif tipo == "RNG":
+        # Dados aleatórios dos algoritimos
+        for i in range(1, N, 1):
+            tamanho = i * T
+            X = gerar_dados_random(tamanho)
+            L.append(execucao(X))
+            L_TAMANHOS.append(tamanho)
     else:
         return
     
-    # criando tabela unificada de tamanho + tempo
-    listaCompleta = []
-    for i, lista in enumerate(execucoes):
-        print(lista)
-        listaCompleta.append(lista + [tamExecucoes[i]])
+    # Mostrar os resultados
+    print('-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-')
+    for x in L:
+        c = len(x) - 1
+        i = 0
+        for y in x:
+            if (i < c):
+                print(y, end=',')
+            else:
+                print(y, end='')
+            i +=1
+        print()
 
-    # Criando o dataframe do pandas
-    df = pd.DataFrame(listaCompleta, columns=['QS1', 'QS2', 'MS2', 'MS3', 'SS1', 'SS2', 'TAMANHO'])
-
-    # salvando o dataframe
-    df.to_excel(f'./output/dados_{tipo}_{tamanhoArray}.xlsx', index=False)
-
-# Testando
-testes(tamanhoArray=100, tipo="DSC")
-testes(tamanhoArray=100, tipo="ASC")
-testes(tamanhoArray=100, tipo="RNG")
+    # Adicina a Coluna Final do tamanho do array
+    Lista_final = []
+    for i, lista in enumerate(L):
+        Lista_final.append(lista + [L_TAMANHOS[i]])
     
+    # Criar um DataFrame do Pandas
+    df = pd.DataFrame(Lista_final, columns=[ 'MS1', 'SHS', 'HPS', 'CTS', 'TAM'])
 
+    # Salvar o DataFrame em um arquivo Excel
+    df.to_excel(f'./output/dados_{tipo}_{T}.xlsx', index=False)
+
+# Bateria de testes
+testes(T=100000, N=10, tipo="DSC")
+testes(T=100000, N=10, tipo="ASC")
+testes(T=100000, N=10, tipo="RNG")
